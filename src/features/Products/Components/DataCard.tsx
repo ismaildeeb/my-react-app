@@ -12,11 +12,11 @@ import { Alert, Skeleton } from '@mui/material';
 
 function DataCard() {
     const [isLoading, setIsLoading] = useState(false);
-    const [data, setData] = useState<Product | null>(null);
+    const [data, setData] = useState<Product[] | null>(null);
     const [error, setError] = useState<string | null>(null);
 
     React.useEffect(() => {
-        const fetchData = async () => {
+      const fetchData = async () => {
             setIsLoading(true);
             try {
                 const usecase: GetProductUseCase = new GetProductUseCase();
@@ -51,18 +51,16 @@ function DataCard() {
 
     return (
         <Box sx={{ minWidth: 275 }}>
-            {respo.map((data) => (
+            
                 
-            <Card variant="elevation" key={product.id}>
+            <Card variant="elevation">
                 <CardContent>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                {product.Name}
                     </Typography>
                     <Typography variant="h5" component="div">
 
                     </Typography>
                     <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                {product.Description}
                     </Typography>
                     <Typography variant="body2">
 
@@ -73,7 +71,6 @@ function DataCard() {
                     <Button size="small">Learn More</Button>
                 </CardActions>
             </Card>
-           ))}
         </Box>
     );
 }
