@@ -47,22 +47,25 @@ function DataCard() {
     if (!data) {
         return null;
     }
+    
 
     return (
         <Box sx={{ minWidth: 275 }}>
-            <Card variant="elevation">
+            {respo.map((data) => (
+                
+            <Card variant="elevation" key={product.id}>
                 <CardContent>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                        {data.Name}
+                {product.Name}
                     </Typography>
                     <Typography variant="h5" component="div">
-                        {data.Price.toString()}
+
                     </Typography>
                     <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                y
+                {product.Description}
                     </Typography>
                     <Typography variant="body2">
-                        {data.Description}
+
                         <br />
                     </Typography>
                 </CardContent>
@@ -70,6 +73,7 @@ function DataCard() {
                     <Button size="small">Learn More</Button>
                 </CardActions>
             </Card>
+           ))}
         </Box>
     );
 }

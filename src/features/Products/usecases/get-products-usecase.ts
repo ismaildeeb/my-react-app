@@ -4,7 +4,7 @@ import { Product } from "../Product.model";
 
 export class GetProductUseCase {
     private readonly _productRepository: ProductRepository = new ProductRepository()
-    async execute(): Promise<AxiosResponse<Product>> {
+    async execute(): Promise<AxiosResponse<Product[]>> {
         return await this._productRepository.GetProducts()
     }
 }

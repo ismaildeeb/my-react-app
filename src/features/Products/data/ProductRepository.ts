@@ -9,8 +9,8 @@ class ProductRepository implements IProductRepository {
     private readonly _endpoint = 'Product'
 
 
-    async GetProducts(): Promise<AxiosResponse<Product>> {
-        return await axiosIns.get<Product>(this._endpoint)
+    async GetProducts(): Promise<AxiosResponse<Product[]>> {
+        return await axiosIns.get<Product[]>(this._endpoint)
     }
     async getProduct(id: number): Promise<AxiosResponse<Product>> {
         return await axiosIns.get<Product>(`${this._endpoint}/${id}`)

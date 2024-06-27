@@ -27,7 +27,7 @@ function Navbar() {
                     </Typography>
 
                     {listbar.map((name) => (
-                        <Link href={`http://localhost:5173/${name}`} sx={{
+                        <Link href={`http://localhost:3001/${name}`} sx={{
                             marginRight: 13,
                             textDecoration: 'none',
                         }}>
