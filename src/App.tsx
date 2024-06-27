@@ -1,15 +1,21 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css'
 import Navbar from './Layouts/Navbar';
 import Customer from './Pages/Customers';
 import Product from './Pages/Products';
 import SalesOrderDetails from './Pages/SalesOrderDetails';
 import SalesOrderHeader from './Pages/SalesOrderHeader';
+import { lazy, Suspense } from 'react';
+import Loader from './Shared/Loader';
+
+const AppSnackbar = lazy(() => import('./Shared/AppSnackbar'))
 
 function App() {
   return (
     <div className='App'>
       <Navbar />
+      <Suspense fallback={<Loader fixed overlay styles={{ text: { color: '#fff' } }} />}>
+    </Suspense>
       <BrowserRouter>
         <Routes>
           <Route path="/Customer" element={<Customer />} />
@@ -19,6 +25,7 @@ function App() {
         </Routes>
       </BrowserRouter>
 
+      <AppSnackbar />
     </div>
   );
 }
