@@ -12,6 +12,9 @@ function Navbar() {
         'Sales Order Header',
         'Sales Order Detail'
     ]
+    const keylist = [
+        1,2,3,4
+    ]
 
     return (            
             <AppBar
@@ -27,7 +30,7 @@ function Navbar() {
                     </Typography>
 
                     {listbar.map((name) => (
-                        <Link href={`http://localhost:3001/${name}`} sx={{
+                        <Link href={`http://localhost:3001/${name}`} key={listbar.indexOf(name)} sx={{
                             marginRight: 13,
                             textDecoration: 'none',
                         }}>

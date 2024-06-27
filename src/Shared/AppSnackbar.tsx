@@ -1,9 +1,8 @@
 import { Alert, Snackbar, SnackbarCloseReason } from "@mui/material"
 import { SyntheticEvent, useCallback } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../store/index";
 import { hideSnackbar } from "../core/sliceCore";
-import { useDispatch } from "react-redux";
 
 interface AppSnackbarProps {
     show?: boolean;
@@ -39,7 +38,3 @@ const AppSnackbar: React.JSXElementConstructor<AppSnackbarProps> = (props: AppSn
 }
 
 export default AppSnackbar;
-function useSelector(arg0: (state: AppState) => any) {
-    throw new Error("Function not implemented.");
-}
-

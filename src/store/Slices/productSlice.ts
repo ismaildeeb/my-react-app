@@ -32,56 +32,56 @@ const productSlice = createSlice({
     name: 'products',
     initialState,
     reducers: {
-        // setLoading(state, action: PayloadAction<{ type: keyof ProductLoading, value: boolean }>) {
-        //     state.isLoading[action.payload.type] = action.payload.value
-        // },
+        setLoading(state, action: PayloadAction<{ type: keyof ProductLoading, value: boolean }>) {
+            state.isLoading[action.payload.type] = action.payload.value
+        },
 
-        // getProductsSuccess(state, action: PayloadAction<Product[]>) {
-        //     state.products = action.payload
-        // },
+        getProductsSuccess(state, action: PayloadAction<Product[]>) {
+            state.products = action.payload
+        },
 
-        // craeteProductSuccess(state, action: PayloadAction<Product>) {
-        //     state.products.push(action.payload)
-        // },
+        craeteProductSuccess(state, action: PayloadAction<Product>) {
+            state.products.push(action.payload)
+        },
 
-        // createProductFailure(state, action: PayloadAction<string>) {
-        //     state.error = action.payload
-        // }
+        createProductFailure(state, action: PayloadAction<string>) {
+            state.error = action.payload
+        }
     }
 
 })
 
 export const {
-    // setLoading,
-    // getProductsSuccess,
-    // craeteProductSuccess,
-    // createProductFailure
+    setLoading,
+    getProductsSuccess,
+    craeteProductSuccess,
+    createProductFailure
 } = productSlice.actions;
 
-// export const fetchProducts = createAsyncThunk<void, void, {}>(
-//     'products/fetchProducts',
-//     async (_,{ dispatch }) => {
-//         try {
-//             dispatch(setLoading({ type: 'fetch', value: true }))
-//             const usecase: GetProductUseCase = new GetProductUseCase()
-//             const response = await usecase.execute()
+export const fetchProducts = createAsyncThunk<void, void, {}>(
+    'products/fetchProducts',
+    async (_,{ dispatch }) => {
+        try {
+            dispatch(setLoading({ type: 'fetch', value: true }))
+            const usecase: GetProductUseCase = new GetProductUseCase()
+            const response = await usecase.execute()
 
-//             if (response.status === 200) {
-//                 dispatch(getProductsSuccess(response.data))
-//             }
-//             else {
-//                 dispatch(productSlice.actions.createProductFailure('Failed to fetch data'))
-//             }
-//         } catch (error: any) {
-//             if (error.code === 'ERR_NETWORK') {
-//                 dispatch(showError({ message: 'Check your internet connection' }))
-//             } else {
-//                 dispatch(showError({ message: 'Something went wrong' }))
-//             }
-//         } finally {
-//             dispatch(setLoading({ type: 'fetch', value: false }))
-//         }
-//     }
-// )
+            if (response.status === 200) {
+                dispatch(getProductsSuccess(response.data))
+            }
+            else {
+                dispatch(productSlice.actions.createProductFailure('Failed to fetch data'))
+            }
+        } catch (error: any) {
+            if (error.code === 'ERR_NETWORK') {
+                dispatch(showError({ message: 'Check your internet connection' }))
+            } else {
+                dispatch(showError({ message: 'Something went wrong' }))
+            }
+        } finally {
+            dispatch(setLoading({ type: 'fetch', value: false }))
+        }
+    }
+)
 
 export default productSlice.reducer

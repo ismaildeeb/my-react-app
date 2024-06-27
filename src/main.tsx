@@ -4,7 +4,7 @@ import './index.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import App from './App'
 import { Provider } from 'react-redux';
-import index from './store/index';
+import {index} from './store/index';
 
 const theme = createTheme();
 
